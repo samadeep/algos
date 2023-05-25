@@ -2,6 +2,18 @@
 typedef unsigned long long ull;
 
 
+// Important to know :
+// Description: Pollard-rho randomized factorization algorithm. Returns prime
+ // * factors of a number, in arbitrary order (e.g. 2299 -> \{11, 19, 11\}).
+ // * Time: $O(n^{1/4})$, less for numbers with small factors.
+ // * Status: stress-tested by Rubikun
+ // * Details: This implementation uses the improvement described here
+ // * (https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm#Variants…), where
+ // * one can accumulate gcd calls by some factor (40 chosen here through
+ // * exhaustive testing). This improves performance by approximately 6-10x
+ // * depending on the inputs and speed of gcd. Benchmark found here:
+ // * (https://ideone.com/nGGD9T)
+
 
 const int N = 1e5 + 5;
 bool vis[N];
