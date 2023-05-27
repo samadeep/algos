@@ -10,7 +10,7 @@ class DSU
         parent.resize(n);
         iota(parent.begin(),parent.end(),0);
         size.resize(n);
-        for(auto &x:size) x=1;
+        for(auto &s:size) s=1;
     };
  
     ll findparent(ll node)
