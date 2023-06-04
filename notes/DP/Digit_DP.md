@@ -5,21 +5,21 @@
 
 ## Questions :
 
-### Question 1 : 2769. Count of Integers
+###  Question 1 : 2769. Count of Integers : Leetcode
 
 - https://leetcode.com/problems/count-of-integers/description/
 
-## Explanation
+#### Explanation
 
-The variables tight1 and tight2 are used to keep track of whether the chosen digits so far are the lowest possible (in num1) and highest possible (in num2), respectively.
+The variables **tight1 and tight2** are used to keep track of whether the chosen digits so far are the **lowest possible (in num1) and highest possible (in num2), respectively.**
 
-If tight1 is true, means all digits chosen so far are lowest possible value according to num1. So, we cannot choose a digit less than the digit at the current index, as it would make the number smaller than num1. Hence, we still choose the lowest digit allowed, tight1 remains true; otherwise, it becomes false, indicating that the lowest digit can be 0 in further places.
+If **tight1 is true**, means all digits chosen so far are lowest possible value according to num1. So, we cannot choose a digit less than the digit at the current index, as it would make the number smaller than num1. Hence, we still choose the lowest digit allowed, tight1 remains true; otherwise, it becomes false, indicating that the lowest digit can be 0 in further places.
 
-Similarly,If tight2 is true, it means that all the digits chosen so far are at their highest possible value according to num2. Therefore, we cannot choose a digit higher than the digit at the current index, as it would make the number larger than num2.
+Similarly,If **tight2 is true**, it means that all the digits chosen so far are at their highest possible value according to num2. Therefore, we cannot choose a digit higher than the digit at the current index, as it would make the number larger than num2.
 
-Time complexity:
-O(Number_Of_Digits * Sum)
-i.e. O(logN * Sum)
+**Time complexity:** : $$O( N(digits) * Sum) i.e. O(logN * Sum)$$ 
+
+#### Code :
 
 ```cpp
 
