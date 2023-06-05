@@ -1,6 +1,6 @@
 ## Resources :
-**LC** : https://leetcode.com/problems/count-of-integers/solutions/3595161/recusrion-dp-similar-problems-theory-of-digit-dp/
-**Codeforces** : https://codeforces.com/blog/entry/53960
+ - **LC** : https://leetcode.com/problems/count-of-integers/solutions/3595161/recusrion-dp-similar-problems-theory-of-digit-dp/
+ - **Codeforces** : https://codeforces.com/blog/entry/53960
 
 
 ## Questions :
