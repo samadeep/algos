@@ -5,7 +5,73 @@
 
 ## Questions :
 
-###  Question 1 : 2769. Count of Integers : Leetcode
+###  Question 1 : Number of digit 1
+- https://leetcode.com/problems/number-of-digit-one
+#### Explanation :
+Keep the lower bound as 0 and upper bound as N as given then proceed as fundamentally as a digit dp where the condition is if dig_added == 1 then count increases
+
+<details>
+    
+<summary> Code : CPP </summary>
+    
+#### Code :
+```cpp
+class Solution {
+public:
+    // dp[ digs ][ bool ][ count_ones ]
+    int dp[ 10 ][ 10 ][ 2 ];
+
+    Solution()
+    {
+        reset_dp();
+    }
+    
+    void reset_dp()
+    {  
+        for( int i = 0 ; i < 10 ; i++ ) for( int j = 0 ; j < 10 ; j++ ) for( auto f : {1,0} ) dp[ i ][ j ][ f ] = -1;
+    }
+
+    int count_ways( int idx , bool ub_limit , vector<int> &digs , int count  )
+    {
+        if( idx == digs.size() ) return count;
+
+        if( dp[idx][count][ub_limit] != -1 )
+        {
+            return  dp[idx][count][ub_limit];
+        }
+        int u_limit = ub_limit ? digs[idx] : 9;
+        int ans = 0 ;
+
+        for( int dig = 0 ; dig <= u_limit ; dig++ )
+        {
+            int n_count = count + (dig==1);
+            ans = ans + count_ways( idx+1 , ub_limit & dig == u_limit , digs , n_count );
+        }
+        
+        return  dp[idx][count][ub_limit] = ans;
+
+    }
+    int countDigitOne(int n) {
+
+        vector<int> digs;
+
+        while( n > 0 ) 
+        {
+            digs.push_back(n%10);
+            n = n / 10;
+        }   
+
+        reverse( digs.begin() , digs.end() );
+
+        return count_ways( 0 , 1 , digs , 0 );
+        
+    }
+};
+```
+    
+</details>
+    
+###  Question 2 : 2769. Count of Integers : Leetcode
 
 - https://leetcode.com/problems/count-of-integers/description/
 
@@ -19,6 +85,11 @@ Similarly,If **tight2 is true**, it means that all the digits chosen so far are 
 
 **Time complexity:** : $$O( N(digits) * Sum) i.e. O(logN * Sum)$$ 
 
+    
+<details>
+    
+<summary> Code : CPP </summary>
+        
 #### Code :
 
 ```cpp
@@ -94,3 +165,5 @@ Similarly,If **tight2 is true**, it means that all the digits chosen so far are 
     }
 };
 ```
+    
+</details>
