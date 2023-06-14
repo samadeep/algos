@@ -11,6 +11,8 @@
  */ 
 
 // Source : https://leetcode.com/problems/binary-tree-postorder-traversal/solutions/504598/an-iterative-3-in-1-template-for-preinpost-order-traversal/
+// Blog : https://www.enjoyalgorithms.com/blog/iterative-binary-tree-traversals-using-stack
+
 
         stack<TreeNode*> stack{};
         TreeNode* node = root;
