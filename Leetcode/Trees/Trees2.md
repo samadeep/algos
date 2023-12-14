@@ -15,7 +15,7 @@ public:
        
         vector<vector<int> > ans;
         map<int,map<int,multiset<int>>> mp;      // vertical , horizental , value
-        queue<pair<TreeNode*,pair<int,int>>> q;  // node , vertical , horizental
+        queue<pair< TreeNode*, pair<int,int>> > q;  // node , vertical , horizental
         
 
         q.push({root , { 0 , 0 }});
@@ -59,17 +59,44 @@ public:
 // if inserting into vector<int> a -> [1 2 3 4]
 // insert vector<int> b -> [2 3 4]
 // Code ->  a.insert( a.end() , b.begin() , b.end() )
+```
 
 #### 545. Boundary of Binary Tree
-
-
+Level Wise last element
 
 #### 199. Binary Tree Right Side View
+```cpp
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        // do a level order traversal and return the first one
+        queue<TreeNode*> q;
+        vector<int> ans;
+        if( root ) q.push(root);
 
+        while( !q.empty() )
+        {
+            int sz = q.size();
+            vector<TreeNode*> level;
 
+            for( int i = 0; i < sz ; i++ )
+            {
+                auto node = q.front() ; 
+                q.pop();
+                level.push_back(node);
+                if( node -> left )  q.push(node->left);
+                if( node -> right)  q.push(node->right);
+            }
+            // [ a b c ] For last element -> ans.back()
+            ans.push_back(level.back()->val);
+        }
+        return ans; 
+    }
+};
+```
 
 ####  116. Populating Next Right Pointers in Each Node
-
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
 
 ####  Concept : Minimum time taken to BURN the Binary Tree from a Node
