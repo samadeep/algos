@@ -62,9 +62,10 @@ public:
 ```
 
 #### 545. Boundary of Binary Tree
-Level Wise last element
+
 
 #### 199. Binary Tree Right Side View
+Level Wise last element in a Level-Order-Traversal
 ```cpp
 class Solution {
 public:
