@@ -139,6 +139,54 @@ public:
     }
 };
 ```
+### Binary Tree Paths 
+Link : https://leetcode.com/problems/binary-tree-paths/description/
+
+```cpp
+class Solution {
+public:
+    vector<string> ans;
+    void add_path( TreeNode* root , string path )
+    {
+        if( root -> left == NULL && root ->right == NULL )
+        {
+            string val = to_string(root->val);
+            path += val;
+            ans.push_back(path);
+            path = path.substr( 0 , path.size() - val.size() );
+            return;
+        }
+        if( root -> left ) 
+        {
+            string val = to_string(root->val);
+            path += val;
+            path.push_back('-');path.push_back('>');
+            add_path(root -> left,path);
+            path = path.substr( 0 , path.size() - val.size() );
+            path.pop_back();path.pop_back();
+        }
+        if( root -> right )
+        {
+            string val = to_string(root->val);
+            path += val;
+            path.push_back('-');path.push_back('>');
+            add_path(root -> right,path);
+            path = path.substr( 0 , path.size() - val.size() );
+            path.pop_back();path.pop_back();
+        }
+        return;
+    }
+    vector<string> binaryTreePaths(TreeNode* root) {
+
+        if( !root ) return {};
+        add_path(root,"");
+        return ans;
+
+    }
+};
+```
+
+
 
 ####  116. Populating Next Right Pointers in Each Node
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
