@@ -97,6 +97,49 @@ public:
 };
 ```
 
+Path Sum
+Chack at the Leaf Node for the sum 
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool add_and_send( TreeNode* root , int target )
+    {
+        if( root -> left == NULL && root -> right == NULL )
+        {
+            if( target - root->val == 0 ) return true ;
+            else return false;
+        }
+
+        bool done = false;
+        if( !done && root -> left )  
+            done |= add_and_send( root -> left , target - root -> val );
+        if( !done && root -> right )  
+            done |= add_and_send( root -> right , target - root -> val );
+        return done ;
+    }
+
+    bool hasPathSum(TreeNode* root, int target) {
+
+        if( !root ) return false;
+        
+        return add_and_send( root , target );
+
+    }
+};
+```
+
 ####  116. Populating Next Right Pointers in Each Node
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
