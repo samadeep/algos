@@ -210,4 +210,52 @@ Link : https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 
 
+Additional : Daily Question 
+#### Desing a Food Rating System 
+
+Link : https://leetcode.com/problems/design-a-food-rating-system/description/
+```cpp
+
+class FoodRatings {
+    private:
+    vector<string> foods;
+    vector<string> cuisines;
+    vector<int> ratings;
+    
+    map<string,string> food_cuisine; // cuisine , foods
+    map<string,int> food_rating;
+    map<string,set<pair<int,string>>> cuisine_food_rating ; // cuisine -> food -> top rating 
+
+public:
+   FoodRatings( vector<string>& foods, vector<string>& cuisines, vector<int>& ratings) 
+   {
+       this->foods=foods;
+       this->cuisines=cuisines;
+       this->ratings=ratings;
+
+        for( int i = 0 ; i < foods.size() ; i++ )
+        {
+            food_rating[foods[i]] = ratings[i];
+            food_cuisine[foods[i]] = cuisines[i];
+            cuisine_food_rating[cuisines[i]].insert( { -ratings[i] , foods[i]} );
+        }
+    }
+    
+    void changeRating(string food, int newRating) 
+    {
+        // Log(N)
+        string cuisine = food_cuisine[food];
+        cuisine_food_rating[cuisine].erase({ -food_rating[food] , food }) ;
+        cuisine_food_rating[cuisine].insert({ -newRating  , food }) ;
+        food_rating[food] = newRating;
+    }
+
+    string highestRated(string cuisine) 
+    {
+        return cuisine_food_rating[cuisine].begin() -> second;
+    }
+};
+
+```
+
 
