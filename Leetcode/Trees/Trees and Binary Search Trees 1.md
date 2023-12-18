@@ -71,7 +71,43 @@ public:
 #### B. Inorder and Preorder to Tree 
 105. Construct Binary Tree from Preorder and Inorder Traversal
 Link : https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+```cpp
+class Solution {
+public:
+map<int,int> inorder_val;
+TreeNode* build(vector<int>& inorder,int start_in,int end_in,vector<int>& preorder,int start_pre,int end_pre)
+{
+    if(start_in>end_in || start_pre>end_pre) return NULL;
+    
+    int root_node = preorder[start_pre] ;
+    
+    TreeNode* node = new TreeNode(root_node);
 
+    int division = inorder_val[preorder[start_pre]];
+
+    int len = division - start_in;
+
+    // Root Left Right 
+    // Left Root Right
+    
+    node->left=build(inorder, start_in , start_in + len - 1 , preorder, start_pre + 1 , start_pre + len );
+    
+    node->right=build(inorder, division+1 , end_in, preorder, start_pre + len + 1  , end_pre);
+    
+    return node;
+
+}
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        if(inorder.size()!=preorder.size())return nullptr;
+        int index=0;
+        int n=inorder.size()-1;
+        
+        for(auto val:inorder )inorder_val[val]=index++;
+       
+       return build(inorder,0,n,preorder,0,n);
+    }
+};
+```
 
 #### 543. Diameter of Binary Tree
 Link : https://leetcode.com/problems/diameter-of-binary-tree/description/
