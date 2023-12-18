@@ -1,8 +1,48 @@
-Graph 
+## Graph 
 
-Topic 1 : Flood Fill and Related Problems
+### Create Graph
 
-200 : Number of Islands
+1 . From Edges
+```cpp
+
+vector<vector<int>> graph(N);
+for( auto p : edges ) 
+	graph[p[0]].push_back(p[1]); // for a directed graph
+
+// for a undirected graph
+for( auto p : edges )
+{
+	graph[p[0]].push_back(p[1]);
+	graph[p[1]].push_back(p[0]);
+}
+
+```
+
+2 . From a Tree :
+```cpp
+void create_graph(TreeNode* root)
+{
+        if( !root ) return;
+        
+        if(root->left){
+            adj[root->val].push_back(root->left->val);
+            adj[root->left->val].push_back(root->val);
+        }
+
+        if(root->right){
+            adj[root->val].push_back(root->right->val);
+            adj[root->right->val].push_back(root->val);
+        }
+
+        create_graph(root->left);
+        create_graph(root->right);
+    }
+```
+
+
+### Topic 1 : Flood Fill and Related Problems
+
+#### 200 : Number of Islands
 Link : https://leetcode.com/problems/number-of-islands/
 
 Code :
@@ -70,8 +110,8 @@ public:
 };
 ```
 
-Related Problems :
-Number of Provinces : https://leetcode.com/problems/number-of-provinces/
-Max Area of Islands : https://leetcode.com/problems/max-area-of-island/description/
-SUrrorunded Regions : https://leetcode.com/problems/surrounded-regions/description/
-Rotting Oranges :     https://leetcode.com/problems/rotting-oranges/description/
+#### Related Problems :
+- Number of Provinces : https://leetcode.com/problems/number-of-provinces/
+- Max Area of Islands : https://leetcode.com/problems/max-area-of-island/description/
+- SUrrorunded Regions : https://leetcode.com/problems/surrounded-regions/description/
+- Rotting Oranges :     https://leetcode.com/problems/rotting-oranges/description/
