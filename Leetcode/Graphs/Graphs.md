@@ -53,9 +53,10 @@ public:
     {
 
         int N = grid.size();
+        int M = grid[0].size();
         // vector<vector<int>> graph( N , vector<int>(N,0) );
         
-        vector<vector<bool>> visited( N , vector<bool>(N,0) );
+        vector<vector<bool>> visited( N , vector<bool>(M,0) );
 
         // Adjacency Matrix
         // for( int i = 0 ; i < N ; i++ )
@@ -68,17 +69,16 @@ public:
 
         auto inside_graph = [&](int i , int j)
         {
-            return i >= 0 && i <= N - 1 && j >= 0 && j <= N-1; 
+            return i >= 0 && i <= N - 1 && j >= 0 && j <= M-1; 
         };
 
         vector<pair<int,int>> directions = { { 0 , 1 } , { 0 , -1 } , { 1 , 0 } , { -1 , 0 }  };
 
         function<void(int,int)> bfs = [&]( int x , int y )
         {
-            
+            // 4 directions
             visited[x][y] = 1 ;
-
-            // Go into all 4 directions
+            
             for( auto [ dx , dy ] : directions )
             {
                 int new_x = x + dx ;
@@ -92,20 +92,21 @@ public:
             }
         };
 
-        int islands = 0;
+        int ans = 0;
         for( int i = 0 ; i < N ; i++ )
         {
-            for( int j = 0 ; j < N ; j++ )
+            for( int j = 0 ; j < M ; j++ )
             {
                 if( !visited[i][j] && grid[i][j] == '1' )
                 {
                     bfs( i , j  );
-                    islands++;
+                    ans++;
                 }
             }
         }
 
-        return islands;
+        return ans;
+        
     }
 };
 ```
