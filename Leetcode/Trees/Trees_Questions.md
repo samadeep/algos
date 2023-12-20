@@ -66,3 +66,49 @@ public:
     }
 };
 ```
+
+### 968. Binary Tree Cameras
+Link : https://leetcode.com/problems/binary-tree-cameras/description/
+
+```cpp
+class Solution {
+public:
+    int not_covered = 0 , hasCamera = 1 , covered = 2 ;
+    int number = 0;
+
+    int find_cover( TreeNode* root )
+    {
+        if( root == NULL ) return covered;
+        
+        int left = find_cover( root -> left );
+        int right = find_cover( root -> right );
+
+        if( left == not_covered || right == not_covered )
+        {
+            number++;
+            return hasCamera;
+        }
+
+        else if( left == hasCamera || right == hasCamera )
+        {
+            return covered;
+        } 
+
+        else
+        {
+            return not_covered;
+        }
+
+    }
+
+    int minCameraCover(TreeNode* root) {
+
+        int root_covered = find_cover(root);
+
+        if( root_covered == not_covered ) return number + 1 ;
+        else return number ;
+        
+    }
+};
+
+```
