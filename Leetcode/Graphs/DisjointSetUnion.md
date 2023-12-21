@@ -61,53 +61,6 @@ Link : https://leetcode.com/problems/count-the-number-of-complete-components/des
 
 ```cpp
 // parent -> Rank Compression / Path 
-
-class DSU
-{
-    public:
-    int N ;// Number of Nodes
-    vector<int> parent , nodes_count ;
-
-    DSU( int n ) : N(n) , parent(n) , nodes_count(n)
-    {
-        iota( parent.begin() , parent.end() , 0 ); // parent[i] = i
-        fill( nodes_count.begin() , nodes_count.end() , 1 ); // size[i] = 1
-    }
-
-    int find_parent( int node )
-    {
-        if( parent[node] == node ) 
-            return node;
-        return parent[node] = find_parent(parent[node]);
-    }
-
-    bool merge( int u , int v )
-    {
-        int parent_u = find_parent(u);
-        int parent_v = find_parent(v);
-
-        if( parent_u == parent_v ) return false;
-
-        if( nodes_count[parent_u] >= nodes_count[parent_v] )
-        {
-            parent[parent_v] = parent_u;
-            nodes_count[parent_u] += nodes_count[parent_v];
-        }
-        else
-        {
-            parent[parent_u] = parent_v;
-            nodes_count[parent_v] += nodes_count[parent_u];
-        }
-        return true;
-    }
-    int getSize( int node )
-    {
-        int parent_node = parent[node];
-        return nodes_count[parent_node];
-    }
-
-};
-
 int64_t ncr( int64_t n , int64_t r )
 {
     int64_t res = 1;
