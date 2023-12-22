@@ -216,12 +216,12 @@ Unique  Number which represents which row and which column for each cell :
 ```
 
 ### More Related Problems :
-- 399. Evaluate Division : https://leetcode.com/problems/evaluate-division/description/
-- 684. Redundant Connection : https://leetcode.com/problems/redundant-connection/description/ [ Cycle Detection using Union Find ]
-- 1319. Number of Operations to Make Network Connected : https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/ 
+-  **Evaluate Division** : https://leetcode.com/problems/evaluate-division/description/
+-  **Redundant Connection** : https://leetcode.com/problems/redundant-connection/description/ [ Cycle Detection using Union Find ]
+-  **Number of Operations to Make Network Connected** : https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/ 
 
-Hard Problems :
-- Safest Path in Grid : https://leetcode.com/problems/find-the-safest-path-in-a-grid/description/
-- 2492. Minimum Score of a Path Between Two Cities : https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/description/
-- 1697. Checking Existence of Edge Length Limited Paths : https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/description/
+### Hard Problems :
+-   **Safest Path in Grid** : https://leetcode.com/problems/find-the-safest-path-in-a-grid/description/
+-   **Minimum Score of a Path Between Two Cities** : https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/description/
+-   **Checking Existence of Edge Length Limited Paths** : https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/description/
 
