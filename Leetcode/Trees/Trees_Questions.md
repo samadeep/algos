@@ -112,3 +112,95 @@ public:
 };
 
 ```
+### 10034. Find Number of Coins to Place in Tree Nodes
+Link : https://leetcode.com/problems/find-number-of-coins-to-place-in-tree-nodes/
+```cpp
+class Solution {
+public:
+    class Node
+    {
+        int subtreenodes;
+        vector<int> pos , neg;
+
+        public :
+        int val;
+        Node() 
+        {
+            val = 0;
+        }
+        
+        Node( int v )
+        {
+            subtreenodes = 1 ;
+            val = v;
+            if( v > 0 ) pos.push_back(val);
+            else neg.push_back(val);
+        }
+        
+        void merge_update( Node child_node )
+        {
+            subtreenodes += child_node.subtreenodes;
+            pos.insert( pos.end() , child_node.pos.begin() ,  child_node.pos.end() );
+            neg.insert( neg.end() , child_node.neg.begin() ,  child_node.neg.end() );
+            sort( pos.begin() , pos.end() );
+            reverse( pos.begin() , pos.end() ); // sort( pos.begin() , pos.end() , greater<int>() )
+            sort(neg.begin(),neg.end()); 
+            // pos -> top3 neg -> top2 
+            int pos_poss = min( static_cast<int>(pos.size()) , 3 ); 
+            int neg_poss = min( static_cast<int>(neg.size()) , 2 );
+            pos.resize( pos_poss );
+            neg.resize( neg_poss );
+        }
+
+        long long placed_coins()
+        {
+            if( subtreenodes < 3 ) return 1 ;
+            
+            long long optimal = 0;
+            
+            if( (int)pos.size() == 3 )  optimal = max( optimal , 1LL * pos[0] * pos[1] * pos[2] );
+            if( (int)neg.size() == 2 && pos.size() >= 1 ) optimal = max( optimal , 1LL * neg[0] * neg[1] * pos[0] );
+            
+            return optimal;   
+        } 
+    };
+    
+    
+    vector<long long> placedCoins(vector<vector<int>>& edges, vector<int>& cost) 
+    {
+        int n = cost.size();
+        vector<long long> ans(n);
+        
+        vector<vector<int>> graph(n);
+        
+        for( auto e : edges ) 
+        {
+            graph[e[0]].push_back(e[1]);
+            graph[e[1]].push_back(e[0]);
+        }
+        
+        function< Node(int,int) > dfs = [&]( int src , int par )
+        {
+            
+            Node parentnode( cost[src] );
+            // int a(0);
+            
+            for( int nxt : graph[src] )
+            {
+                if( nxt == par ) continue;
+                Node child = dfs( nxt , src );
+                parentnode.merge_update( child );
+            }
+            
+            ans[src] =  parentnode.placed_coins();
+            
+            return parentnode;
+        };
+        
+        dfs( 0 , -1 );
+        
+        return ans;
+        
+    }
+};
+```
