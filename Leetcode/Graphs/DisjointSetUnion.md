@@ -215,6 +215,35 @@ Unique  Number which represents which row and which column for each cell :
     1
 ```
 
+### Added Codes :
+ 
+#### 1319. Number of Operations to Make Network Connected
+Link : https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/
+
+```cpp
+class Solution {
+public:
+    int makeConnected(int n, vector<vector<int>>& connections) {
+        
+        DSU dsu(n);
+        int ans=0;
+        int components = n , redundant_edges = 0;
+        
+        for(auto e:connections)
+        {
+            if( dsu.merge(e[0],e[1]) == false ) redundant_edges++; // parent_same 
+            else components--; 
+        }
+
+        if( components == 1 ) return 0;
+
+        if( redundant_edges >= components - 1 ) return components - 1;
+        else return -1;
+        // extra edges used to create a tree
+    }
+};
+```
+
 ### More Related Problems :
 -  **Evaluate Division** : https://leetcode.com/problems/evaluate-division/description/
 -  **Redundant Connection** : https://leetcode.com/problems/redundant-connection/description/ [ Cycle Detection using Union Find ]
