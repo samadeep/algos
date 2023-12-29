@@ -25,4 +25,12 @@ public:
 };
 ```
 
+### Similar Questions :
+
+1. Atmost 1 Transaction [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) 
+2. Infinite Transactions [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) 
+3. Atmost K Transactions  
+    i. [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)   
+    ii. [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/) 
+
 
