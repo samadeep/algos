@@ -102,3 +102,38 @@ void solve()
     cout << (mincoins[target] == inf ? -1 : mincoins[target]) << endl;
 }
 ```
+
+### Coin Combinations I
+Similar Implementation to Minimising Coins only here we look at ways instead of how to minimise the coins
+
+**State**:
+`ways[x] = number of ways to make value x`  <br>
+**Transitions** :
+`ways[sum] += ways[sum-coin[i]] for each coin available`
+
+```cpp
+void solve()
+{
+    int target,N;
+    cin >> N >> target;
+
+    vector<int> coins(N);
+    for( auto &x : coins ) cin >> x;
+
+    vector<int> ways(target+1,0);
+    ways[0] = 1; // to make zero there is only 1 way
+
+    for( int sum = 1 ; sum <= target ; sum++ )
+    {
+        for( auto coin : coins )
+        {
+            if( sum - coin >= 0 )
+                (ways[sum] += ways[sum-coin])%MOD ;
+
+        }
+    }
+
+    cout << ways[target] << endl;
+}
+```
+
