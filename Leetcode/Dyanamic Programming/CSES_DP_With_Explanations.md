@@ -137,3 +137,48 @@ void solve()
 }
 ```
 
+
+
+### Coin Combinations II
+Initially, we say we have ways[0][0] = 1, i.e we have the empty set with sum zero.
+
+When calculating dp[i][x], we consider the i'th coin. Either we didn't pick the coin, then there are ways[i-1][x] possibilities. Otherwise, we picked the coin. Since we are allowed to pick it again, there are ways[i][x — <value of i'th coin>] possibilities (not ways[i-1][x — <value of i'th coin>] possibilities).
+
+Because we consider the coins in order, we will only count one order of coins. This is unlike the previous task, where we considered every coin at all times.
+
+But we can use a a single ways[target] for all the calculations 
+
+```cpp
+void solve()
+{
+    int N , target ; cin >> N >> target;
+
+    vector< int > ways( target + 1 , 0 );
+    vector<int> coins(N);
+
+    for( auto &x : coins ) cin >> x;
+    ways[0] = 1 ;
+
+    // ways[ coin_level ][ sum ] = ways[ coin_level - 1 ][ sum - coin[i] ]
+
+    // coin -> sum
+
+    for( int coin_level = 1 ; coin_level <= N ; coin_level++ )
+    {
+        for( int sum = 0 ; sum <= target ; sum++ )
+        {
+            if( sum - coins[coin_level-1] >= 0 )
+            {
+                (ways[sum] = ways[sum]%MOD + ways[sum - coins[coin_level-1]]%MOD )%MOD;
+                 ways[sum] %= MOD;
+            }
+        }
+    }
+
+    // ways[level] = ways[level-1] can be replaced by a single array 'ways'
+
+    cout << (ways[target])%MOD << endl;
+}
+
+
+```
