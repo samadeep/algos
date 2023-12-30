@@ -67,20 +67,20 @@ void solve()
 This is a classical problem called the **unbounded knapsack problem**.<br>
 
 **State**:
-mincoins[x] = minimum number of coins with sum x. <br>
+`mincoins[x] = minimum number of coins with sum x.` <br>
 **Transitions** :
 `mincoins[sum] = min( mincoins[sum] ,  mincoins[sum-c[i]] + 1 ) for alli = 0 to N-1`
 
-We look at the last coin added to get sum x, say it has value v. We need dp[x-v] coins to get value x-v, and 1 coin for value v. Therefore we need dp[x-v]+1 coins if we are to use a coin with value v. Checking all possibilities for v must include the optimal choice of last coin.
+We look at the last coin added to get sum x, say it has value v. We need mincoins[x-v] coins to get value x-v, and 1 coin for value v. Therefore we need dp[x-v]+1 coins if we are to use a coin with value v. Checking all possibilities for v must include the optimal choice of last coin.
 
-As an implementation detail, we use dp[x] = 1e9 = 109≈∞ to signify that it is not possible to make value x with the given coins.
+As an implementation detail, we use mincoins[x] = 1e9 = 109≈∞ to signify that it is not possible to make value x with the given coins.
 
 The complexity is 𝑂(𝑛⋅𝑡𝑎𝑟𝑔𝑒𝑡)
 ```cpp
 const int inf = 1e9+7;
 void solve()
 {
-	  int target,N;
+    int target,N;
     cin >> N >> target;
 
     vector<int> coins(N);
@@ -103,7 +103,7 @@ void solve()
 }
 ```
 
-### Coin Combinations I
+### 2. Coin Combinations I
 Similar Implementation to Minimising Coins only here we look at ways instead of how to minimise the coins
 
 **State**:
@@ -160,12 +160,13 @@ int main(){
                     dp[i+c[j]] = (dp[i+c[j]] + dp[i]) % MOD;
  
     printf("%lld\n", dp[X]);
+}
 ```
 
-### Coin Combinations II
+### 4. Coin Combinations II
 Initially, we say we have ways[0][0] = 1, i.e we have the empty set with sum zero.
 
-When calculating dp[i][x], we consider the i'th coin. Either we didn't pick the coin, then there are ways[i-1][x] possibilities. Otherwise, we picked the coin. Since we are allowed to pick it again, there are ways[i][x — <value of i'th coin>] possibilities (not ways[i-1][x — <value of i'th coin>] possibilities).
+When calculating ways[i][x], we consider the i'th coin. Either we didn't pick the coin, then there are ways[i-1][x] possibilities. Otherwise, we picked the coin. Since we are allowed to pick it again, there are ways[i][x — <value of i'th coin>] possibilities (not ways[i-1][x — <value of i'th coin>] possibilities).
 
 Because we consider the coins in order, we will only count one order of coins. This is unlike the previous task, where we considered every coin at all times.
 
