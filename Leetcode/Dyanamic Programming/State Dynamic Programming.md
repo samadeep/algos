@@ -24,6 +24,38 @@ public:
     }
 };
 ```
+### 122. [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) 
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& a) {
+
+        int n = a.size();
+        // using states thinking
+        // (s1,s2) states are there 
+        //  buy -> sell / sell -> buy
+        // Option to hold at each point
+        vector<int> sell(n,0) , buy(n,0);
+
+        buy[0] = -a[0];
+        sell[0] = 0;
+
+        // buy[i] = buy[i-1] , a[i]
+        // sell[i] = sell[i-1] 
+
+        for(int i = 1;i<n;i++)
+        {
+            buy[i]  = max( buy[i-1] , sell[i-1] - a[i] );
+            sell[i] = max( sell[i-1] , buy[i-1] + a[i] );
+        }
+
+        return sell[n-1];
+        
+    }
+};
+```
+
 
 ### Similar Questions :
 
