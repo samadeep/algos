@@ -26,6 +26,7 @@ public:
 ```
 ### 122. [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) 
 
+#### Approach 1 : Use Buy and Sell States
 ```cpp
 class Solution {
 public:
@@ -56,6 +57,36 @@ public:
 };
 ```
 
+#### Approach 2 : Regular Selling
+Linearly buy each day and sell each day
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& a) {
+
+        int n = a.size();
+        
+        int buy = a[0];
+        int total_profit = 0;
+
+        for( int i = 1 ; i < n ; i++ )
+        {
+            if( a[i] > buy )
+            {
+                total_profit += a[i] - buy;
+                buy = a[i];
+            }
+            else
+            {
+                buy = a[i];
+            }
+        }
+        return total_profit;
+    }
+};
+```
+ 
 
 ### Similar Questions :
 
