@@ -203,6 +203,37 @@ void solve()
 
     cout << (ways[target])%MOD << endl;
 }
+```
 
+### 5. Removing Digits
 
+`minways[x]` = minimum number of operations to go from x to zero.
+
+When considering a number x, for each digit in the decimal representation of x, we can try to remove it. The transition is therefore: 
+`minways[x] = min𝑑∈𝑑𝑖𝑔𝑖𝑡𝑠(𝑥) minways[x-d].`
+
+We initialize minways[0] = 0.
+
+The complexity is 𝑂(𝑛)
+.
+
+```cpp
+void solve()
+{
+    int N ; cin >> N ; vector<int> minways(N+1,1e9);
+
+    minways[0] = 0;
+
+    for( int i = 0 ; i <= N ; i++ )
+    {
+        string num = to_string(i);
+        for( auto c : num )
+        {
+            minways[i] = min( minways[i] , minways[i-(c-'0')] + 1 );
+        }
+    }
+
+    cout << minways[N] << endl;
+    
+}
 ```
