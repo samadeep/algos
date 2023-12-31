@@ -95,7 +95,7 @@ public:
 
 
 #### Transitions
-![Transitions](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/States.png)
+![Transitions](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/Transitions.jpg.png))
 
 ```cpp
 class Solution {
