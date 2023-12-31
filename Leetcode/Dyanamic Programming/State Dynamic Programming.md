@@ -1,8 +1,7 @@
 ### State Dynamic Programming
 
 
-### 121. Best Time to Buy and Sell Stock
-Link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+### 121. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 
 ```cpp
 class Solution {
@@ -86,7 +85,41 @@ public:
     }
 };
 ```
- 
+
+### [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
+
+
+#### States
+![States](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/States.png)
+
+
+
+#### Transitions
+![Transitions](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/States.png)
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+
+        int N = prices.size();
+
+        vector<int> prebuy( N , 0 ) , sell( N , 0 ) , rest( N , INT_MIN );
+
+        // bought at 0th index 
+        sell[0] = -prices[0];
+
+        for( int i = 1 ; i < N ; i++ )
+        {
+            prebuy[i] = max( prebuy[i-1] , rest[i-1] );
+            sell[i] = max( sell[i-1] , prebuy[i-1] - prices[i] );
+            rest[i] = sell[i-1] + prices[i];
+        }
+
+        return max( prebuy[N-1] , rest[N-1] );
+    }
+};
+```
 
 ### Similar Questions :
 
