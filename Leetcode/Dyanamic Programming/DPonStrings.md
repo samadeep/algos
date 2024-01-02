@@ -15,6 +15,24 @@ for (int l = 1; l < n; ++l) {
 }
 ```
 
+## Edit Distance / Regex Expression Matching / Scramble String
+
+### [Edit Distance](https://leetcode.com/problems/edit-distance/)
+
+
+  
+
+
+### [Regex Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
+
+
+
+### [Scramble String](https://leetcode.com/problems/scramble-string/description/)
+
+
+__Link to Classical DP Problem List__ : https://leetcode.com/list/oqbiuoxe
+
+
 ## Related Questions :
 
 ### 647. Palindromic Substrings
