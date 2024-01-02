@@ -237,3 +237,107 @@ void solve()
     
 }
 ```
+### 6. Grid Paths
+ways[r][c] = number of ways to reach row r, column c.
+
+We say there is one way to reach (0,0), ways[0][0] = 1.
+
+When we are at some position with a ., we came either from the left or top. So the number of ways to get to there is the number of ways to get to the position above, plus the number of ways to get to the position to the left. We also need to make sure that the number of ways to get to any position with a # is 0.
+
+```cpp
+void solve()
+{
+    int n ; cin >> n;
+
+    vector< vector<ll> > ways(n,vector<ll>(n,0));
+
+    ways[0][0] = 1 ;
+
+    for( int i = 0 ; i < n ; i++ )
+    {
+        string row ; cin >> row;
+        for( int j = 0 ; j < n ; j++ )
+        {
+            if( row[j] == '.' ) 
+            {
+                if( i > 0 ) ways[i][j] += ways[i-1][j] % MOD;
+                if( j > 0 ) ways[i][j] += ways[i][j-1] % MOD;
+                ways[i][j] %= MOD;
+            }
+            else
+            {
+                ways[i][j] = 0;
+            }
+
+        }
+    }
+
+    cout << ways[n-1][n-1] % MOD << "\n" ;
+	
+    
+}
+```
+
+
+### 7. Book Shop
+
+This is a case of the classical problem called 0-1 knapsack.
+<br>
+`dp[i][x]` = maximum number of pages we can get for price at most x, only buying among the first i books.
+
+Initially `dp[0][x]` = 0 for all x, as we can't get any pages without any books.
+
+When calculating `dp[i][x]` , we look at the last considered book, the i'th book. We either didn't buy it, leaving x money for the first i-1 books, giving dp[i-1][x] pages. Or we bought it, leaving x-price[i-1] money for the other i-1 books, and giving pages[i-1] extra pages from the bought book. 
+<br>
+Thus, buying the i'th book gives `dp[i-1][x-price[i-1]] + pages[i-1]` pages.
+
+```cpp
+void solve()
+{
+    int N , budget ; 
+    cin >> N >> budget;
+    vector<int> pages(N) , prices(N);
+
+    for( int &x : prices ) cin >> x;
+    for( int &x : pages )  cin >> x;
+
+    vector< vector<ll> > dp(N+1,vector<ll>(budget+1,0));
+    // Dp[i][x] -> i books are taken and we have incurred a cost of X
+
+    // Final Subproblem -> Dp[N][Budget]
+    // 0 / 1 Knapsack
+
+
+    // 5 ->   Having 2 books : [5 , 18  ]  [5 , 30]
+    // 9 ->  9 - 5 -->  dp[i-1][4] + 30 or dp[i-1][4] + 18
+
+    // 10 ->  10 - 5 -->  dp[1][ 5 ] ->  dp[0][0] + 30 = 30 
+    //                    dp[2][10] ->  dp[1][5]=30 + 18 = 48
+
+    // dp[1][5] -> 30
+    // dp[2][10] -> 18 + 30 = 48
+
+
+    for( int i = 1 ; i <= N ; i++ )
+    {
+        for( int now_budget = 0 ; now_budget <= budget ; now_budget++ )
+        {
+            // Don't take the ith book and move on
+            dp[i][now_budget] = dp[i-1][now_budget];
+
+            // Take the ith book
+            int left_money = now_budget - prices[i-1];
+            if( left_money >= 0 )
+            {
+                dp[i][now_budget] = max( dp[i][now_budget] , dp[i-1][left_money] + pages[i-1] );
+            }
+        }
+    }
+
+    cout << dp[N][budget] << endl;
+    
+}
+```
+
+
+
