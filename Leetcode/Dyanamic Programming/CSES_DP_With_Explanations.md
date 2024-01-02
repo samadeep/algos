@@ -283,11 +283,11 @@ void solve()
 
 This is a case of the classical problem called 0-1 knapsack.
 <br>
-`dp[i][x]` = maximum number of pages we can get for price at most x, only buying among the first i books.
+`dp[i][x]` = maximum number of pages we can get for price at most x, only buying among the first `i` books.
 
-Initially `dp[0][x]` = 0 for all x, as we can't get any pages without any books.
+Initially `dp[0][x] = 0` for all x, as we can't get any pages without any books.
 
-When calculating `dp[i][x]` , we look at the last considered book, the i'th book. We either didn't buy it, leaving x money for the first i-1 books, giving dp[i-1][x] pages. Or we bought it, leaving x-price[i-1] money for the other i-1 books, and giving pages[i-1] extra pages from the bought book. 
+When calculating `dp[i][x]` , we look at the last considered book, the i'th book. We either didn't buy it, leaving x money for the first i-1 books, giving `dp[i-1][x]` pages. Or we bought it, leaving `x-price[i-1]` money for the other `i-1` books, and giving `pages[i-1]` extra pages from the bought book. 
 <br>
 Thus, buying the i'th book gives `dp[i-1][x-price[i-1]] + pages[i-1]` pages.
 
