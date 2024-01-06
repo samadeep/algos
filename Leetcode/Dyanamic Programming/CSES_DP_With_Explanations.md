@@ -35,9 +35,12 @@ dp[x] = number of ways to make sum x using numbers from 1 to 6.<br>
 
 **Transitions** :
 For a target sum :
+
 `dp[sum] = dp[sum-1] + dp[sum-2]   + dp[sum-3] + dp[sum-4] + dp[sum-5] + dp[sum-6]`
 
-Sum over the last number used to create x, it was some number between 1 and 6. For example, the number of ways to make sum x ending with a 3 is dp[x-3]. Summing over the possibilities gives dp[x] = dp[x-1] + dp[x-2] + dp[x-3] + dp[x-4] + dp[x-5] + dp[x-6].
+Sum over the last number used to create x, it was some number between 1 and 6. For example, the number of ways to make sum x ending with a 3 is dp[x-3]. Summing over the possibilities gives `dp[x] = dp[x-1] + dp[x-2] + dp[x-3] + dp[x-4] + dp[x-5] + dp[x-6]` .
+
+Why ?? To create a particular sum we have option to take { 1 , 2 , 3 , 4 , 5 , 6 } coins so the previously created ways for [sum - coin] will be equal to the number of ways to create this sum as well and thus we add the ways.
 
 We initialize by dp[0] = 1, saying there is one way with sum zero (the empty set).
 
