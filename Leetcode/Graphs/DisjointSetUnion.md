@@ -117,6 +117,8 @@ public:
 
 ### DSU for a Matrix-Based Graph
 
+Link : [Count Servers that Communicate](https://leetcode.com/problems/count-servers-that-communicate/)
+
 ```cpp
 class Solution {
 public:
