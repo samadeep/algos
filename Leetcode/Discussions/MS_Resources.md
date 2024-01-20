@@ -20,5 +20,49 @@ Link : https://stackoverflow.com/questions/57265628/how-to-check-given-number-or
 - Implement LRU cache<br>
 Link: https://leetcode.com/problems/lru-cache/
 
+```cpp
+// LRU Method
+class LRUCache {
+private:
+    int size;
+    list<int> infos;
+    unordered_map<int, pair<int, list<int>::iterator>> key_list;
+
+    public:
+    LRUCache(int capacity) {
+        size = capacity;
+    }
+
+    int get(int key){
+        if (key_list.find(key) == key_list.end()){
+            return -1; 
+        }
+        auto itr = key_list[key].second;
+        int val = key_list[key].first;
+        infos.erase(itr);
+        infos.push_back(key);
+        key_list[key].second = --infos.end();
+        return val;
+    }
+
+
+    void put(int key, int val){
+        if (key_list.find(key) != key_list.end()){
+            auto itr = key_list[key].second;
+            infos.erase(itr);
+        }
+        infos.push_back(key);
+        key_list[key] = {val, --infos.end()};
+
+        if (key_list.size() > size){
+            int key = infos.front();
+            key_list.erase(key);
+            infos.pop_front();
+        }
+    }
+
+};
+```
+
 - Min subarray for max sum<br>
 Link : https://stackoverflow.com/questions/59707406/how-to-find-the-smallest-contiguous-subarray-with-maximum-sum
