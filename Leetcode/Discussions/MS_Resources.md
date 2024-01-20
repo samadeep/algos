@@ -20,6 +20,7 @@ Link : https://stackoverflow.com/questions/57265628/how-to-check-given-number-or
 - Implement LRU cache<br>
 Link: https://leetcode.com/problems/lru-cache/
 
+### Code
 ```cpp
 // LRU Method
 class LRUCache {
