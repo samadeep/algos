@@ -1,8 +1,7 @@
 
 ## Topological Sort 
 
-![Topological Sorting](https://assets.leetcode.com/users/images/e482f21d-a612-4333-ac80-807eb90c1495_1613794550.934654.png)
-
+![Topological Sorting](https://assets.leetcode.com/users/images/53a3192e-3b39-4003-ab02-ce9299d1e854_1613794475.1125915.png)
 In a directed acyclic graph (DAG), a topological sort is a linear ordering of all vertices such that for any edge (u, v), 
 u comes before v. Another way to describe it is that when you put all vertices horizontally on a line, all of the edges are 
 pointing from left to right.
