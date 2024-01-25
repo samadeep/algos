@@ -1,7 +1,5 @@
 ## Complete Graph Theory Notes 
 
-# Basic Graph Theory Short Note
-
 ### 1. Complexity of Graph
 
 ```
@@ -27,6 +25,7 @@ Topological Sorting: O(V + E).
 Finding Articulation Points and Bridges: O(V + E).
 Prim's Algorithm (Minimum Spanning Tree): O((V + E) * log(V)) with a binary heap or Fibonacci heap.
 Kruskal's Algorithm (Minimum Spanning Tree): O(E * log(V)) with sorting.-
+
 ```
 
 ### 2. Adjacency Matrix
