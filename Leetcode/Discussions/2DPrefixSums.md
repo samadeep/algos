@@ -24,10 +24,13 @@ For a 2D array <br>
 
 #### Calculating for each Submatrix 
 
-For a given `i , j` we create a submatrix for some `{ [pre_i , pre_j] , [ i , j ] }`
+For a given `i , j` we create a submatrix for some `{ [pre_i , pre_j] , [ i , j ] }`<br>
 
-For each submatrix ending at `i,j`
-`Submatrix-Sum = prefix_2D[i][j] + prefix_2D[pre_i-1][pre_j-1] - prefix_2D[pre_i-1][j] - prefix_2D[i][pre_j-1]`
+For each submatrix ending at `i,j` and starting at `[pre_i , pre_j]` <br>
+
+`Submatrix-Sum = prefix_2D[i][j] + prefix_2D[pre_i-1][pre_j-1] - prefix_2D[pre_i-1][j] - prefix_2D[i][pre_j-1]`<br>
+
+where `1 <= pre_i <= i` and `1 <= pre_j <= j` for the given `i,j`.
 
 ### Code :
 ```cpp
