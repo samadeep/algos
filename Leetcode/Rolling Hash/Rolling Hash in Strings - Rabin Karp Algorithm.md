@@ -34,6 +34,8 @@ int len = 10; // add the length of the substring to be hashed
 
 for( int i = 0 ; i < len ; i++ ) hash = hash * unique + (val[i]);
 
+int char_pow_l = pow(26,len);
+
 for( int i = 1 ; i + len - 1 < s.size() ; i++ ){
 	hash = hash * unique - val[i-1] * char_pow_l + val[i+len-1];
 	// Perform the operations and then go to the next hash substring
