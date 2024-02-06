@@ -35,7 +35,7 @@
 
 ### DP on Strings
 
-  1. [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/?envType=list&envId=oytojzu2)
+- 1. [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/?envType=list&envId=oytojzu2)
 - 2. [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/?envType=list&envId=oytojzu2)
 - 3. [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/?envType=list&envId=oytojzu2)
 - 4. [Palindrome Partitioning II](https://leetcode.com/problems/palindrome-partitioning-ii/?envType=list&envId=oytojzu2)
