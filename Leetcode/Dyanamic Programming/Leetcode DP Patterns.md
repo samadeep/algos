@@ -27,7 +27,7 @@
 - 25. [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/?envType=list&envId=50wroh7h)
 - 26. [Maximum Subarray Sum with One Deletion](https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/?envType=list&envId=50wroh7h)
 - 27. [Make Array Strictly Increasing](https://leetcode.com/problems/make-array-strictly-increasing/?envType=list&envId=50wroh7h)
-- 28. [K-Concatenation Maximum Sum](https://leetcode.com/problems/k-concatenation-maximum-sum/?envType=list&envId=50wroh7h
+- 28. [K-Concatenation Maximum Sum](https://leetcode.com/problems/k-concatenation-maximum-sum/?envType=list&envId=50wroh7h)
 - 29. [Maximum Height by Stacking Cuboids](https://leetcode.com/problems/maximum-height-by-stacking-cuboids/?envType=list&envId=50wroh7h)
 - 30. [Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/?envType=list&envId=50wroh7h)
 - 31. [Max Dot Product of Two Subsequences](https://leetcode.com/problems/max-dot-product-of-two-subsequences/?envType=list&envId=50wroh7h)
