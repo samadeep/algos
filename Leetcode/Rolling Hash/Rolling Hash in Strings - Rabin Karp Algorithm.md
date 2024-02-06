@@ -43,6 +43,37 @@ for( int i = 1 ; i + len - 1 < s.size() ; i++ ){
 
 ```
 
+### Implementation with Modulus 
+
+```cpp
+	const int mod = pow(2,24);
+        function<bool(int)> Rabin_Karp_Search = [&](int len) {
+            int unique = 26;
+
+            unordered_map<long long, int> hash_count;
+
+            long long hash = 0;
+
+            for (int i = 0; i < len; i++)
+                hash = ((hash * unique) + (val[i])) % mod;
+
+            hash_count[hash] = 1;
+            long long char_pow_l = 1;
+
+            for (int p = 1; p <= len; p++)
+                char_pow_l = (char_pow_l * unique) % mod;
+
+            for (int i = 1; i + len - 1 < s.size(); i++) {
+
+                hash = (hash * unique - val[i - 1] * char_pow_l % mod + mod) % mod;
+                hash = (hash + (val[i + len - 1])) % mod;
+                if (hash_count[hash] >= 1) return true;
+                hash_count[hash] += 1;
+            }
+            return false;
+        };
+```
+
 
 Related Questions :
 [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/)
