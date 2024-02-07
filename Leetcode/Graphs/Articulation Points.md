@@ -5,7 +5,6 @@ Let's define what an _articulation point_ is. We say that a vertex 𝑉 in a 
 In other words, let 𝐶 be the number of connected components after removing vertex 𝑉 and C increases on removing the edges.
 
 
-
 ![](https://codeforces.com/predownloaded/7f/31/7f31b30b9f0cdfd06bb884da64d2aebe2bc993e1.png)
 
 #### Tarjan's approach to find the Articulation Points O(V + E)
