@@ -58,13 +58,14 @@ int dfs_Articulation_Points( int node, int par ) {
 
 - Why `low[node] = min( low[node] , tin[next] )` instead of `low[node] = min( low[node] , low[next] )` ?
 
-Let's consider node **C** in the graph above, in the DFS traversal the nodes after **C** are: **D** and **E**, when the DFS traversal reaches **E** we find **C** again, if we take its 𝑙𝑜𝑤��� time, `low[E]` will be equal to `disc[A]` but at this point, when we return back to **C** in the DFS we will be omitting the fact that 𝑈� is the **root of a cycle** (which makes it an _articulation point_) and we will be saying that there is a path from **E** to some ancestor of **C** (in this case **A**) which does not require **C** and such path does not exist in the graph, therefore the algorithm will say that **C** is NOT an _articulation point_ which is totally false since the only way to reach **D** and **E** is passing through **C**.
+Let's consider node **C** in the graph above, in the DFS traversal the nodes after **C** are: **D** and **E**, when the DFS traversal reaches **E** we find **C** again, if we take its 𝑙𝑜𝑤 time, `low[E]` will be equal to `tin[A]` but at this point, when we return back to **C** in the DFS we will be omitting the fact that 𝑈� is the **root of a cycle** (which makes it an _articulation point_) and we will be saying that there is a path from **E** to some ancestor of **C** (in this case **A**) which does not require **C** and such path does not exist in the graph, therefore the algorithm will say that **C** is NOT an _articulation point_ which is totally false since the only way to reach **D** and **E** is passing through **C**.
 
 
 
-Related Questions :
+#### Related Questions :
 [1192. Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/)
-Code :
+
+#### Code :
 ```cpp
 class Solution {
 public:
