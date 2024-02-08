@@ -46,6 +46,7 @@ int dfs_Articulation_Points( int node, int par ) {
 			if( low[next] > tin[node] ) // it cannot reach before the node so no back edge is there for fast reach
 			{
 				articulation_point[node] = 1;
+				articulation_point[next] = 1;
 				bridges.push_back({node , next});
 			}
 		}
