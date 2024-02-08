@@ -1,5 +1,9 @@
 ### Defining Articulation Points
 
+Book Link : https://www.comp.nus.edu.sg/~stevenha/myteaching/competitive_programming/cp2.pdf#page=94
+
+
+
 Let's define what an _articulation point_ is. We say that a vertex 𝑉 in a graph 𝐺 with 𝐶 connected components is an _articulation point_ if its removal increases the number of connected components of 𝐺 . 
 
 In other words, let 𝐶 be the number of connected components after removing vertex 𝑉 and C increases on removing the edges.
