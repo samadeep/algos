@@ -124,3 +124,10 @@ public:
 };
 ```
 
+
+More Questions :
+- 1. [Minimize Malware Spread](https://leetcode.com/problems/minimize-malware-spread/?envType=list&envId=9bm5lhts)
+- 2. [Minimize Malware Spread II](https://leetcode.com/problems/minimize-malware-spread-ii/?envType=list&envId=9bm5lhts)
+- 4. [Minimum Number of Days to Disconnect Island](https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/?envType=list&envId=9bm5lhts)
+
+
