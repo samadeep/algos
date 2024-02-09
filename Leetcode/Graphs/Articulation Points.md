@@ -47,7 +47,7 @@ int dfs_Articulation_Points( int node, int par ) {
 
 			dfs( next , node );
 			low[node] = min( low[node] , low[next] );
-			if (low[v] >= tin[u] && parent != -1) {
+			if (low[next] >= tin[node] && parent != -1) {
                 		articulationPoints[next] = 1;
             		}
 			if( low[next] > tin[node] ) // it cannot reach before the node so no back edge is there for fast reach
