@@ -29,8 +29,11 @@ e.g. in a Graph `G` with the traversal `A -> B -> C` the **discovery** *
 // tin[u] = discovery time of u
 // low[u] = 'low' node of u
 vector<int> articulation_point(N,0);
-int time = 0;
-int dfs_Articulation_Points( int node, int par ) {
+vector<bool> visited(N,false);
+int timer = 0;
+
+void dfs_Articulation_Points( int node, int par ) {
+	visited[node] = true;
 	tin[node] = timer++;
 	low[node] = tin[node];
 
