@@ -2,12 +2,6 @@
 ### Classical DP Problems 
 
 - 1. [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/?envType=list&envId=50wroh7h)
-### Code :
-```cpp
-
-
-```
-
 - 2. [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/?envType=list&envId=50wroh7h)
 - 3. [Wildcard Matching](https://leetcode.com/problems/wildcard-matching/?envType=list&envId=50wroh7h)
 - 4. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/?envType=list&envId=50wroh7h)
