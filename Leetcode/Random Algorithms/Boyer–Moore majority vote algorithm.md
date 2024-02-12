@@ -38,6 +38,6 @@ public:
     }
 };
 ```
-
 Related :
-[2780. Minimum Index of a Valid Split](https://leetcode.com/problems/minimum-index-of-a-valid-split/)
+- [2780. Minimum Index of a Valid Split](https://leetcode.com/problems/minimum-index-of-a-valid-split/)
+- Based on 2 **Candidate** **Majority Voting Algorithm** [229. Majority Element II](https://leetcode.com/problems/majority-element-ii/)
