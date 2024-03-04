@@ -42,7 +42,7 @@ All those introduced operators are instant (same speed as an addition) on a CPU 
 
 ### Bitwise operators
 
--   `$` : The bitwise **AND** operator compares each bit of its first operand with the corresponding bit of its second operand. 
+-   `&` : The bitwise **AND** operator compares each bit of its first operand with the corresponding bit of its second operand. 
     If both bits are 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
  	
 -   `|` : The bitwise inclusive **OR** operator compares each bit of its first operand with the corresponding bit of its second operand.
