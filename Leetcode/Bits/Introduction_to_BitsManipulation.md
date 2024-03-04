@@ -189,7 +189,7 @@ int countSetBits(int n)
 - $`n ~|~ (n + 1)`$ sets the last cleared bit: $`0011~0101_2 \rightarrow 0011~0111_2`$.
 - $`n ~\&~ -n`$ extracts the last set bit: $`0011~0100_2 \rightarrow 0000~0100_2`$.
 
-Many more can be found in the book [Hacker's Delight](https://en.wikipedia.org/wiki/Hacker%27s_Delight).
+Many more can be found in the book [Hacker's Delight](https://doc.lagout.org/security/Hackers%20Delight.pdf).
 
 ### Language and compiler support
 
@@ -215,7 +215,7 @@ _Note that some of the operations (both the C++20 functions and the Compiler Bui
 ## Practice Problems
 Leetcode Problems :
 
-
+CF:
 * [Codeforces - Raising Bacteria](https://codeforces.com/problemset/problem/579/A)
 * [Codeforces - Fedor and New Game](https://codeforces.com/problemset/problem/467/B)
 * [Codeforces - And Then There Were K](https://codeforces.com/problemset/problem/1527/A)
