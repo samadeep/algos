@@ -1,13 +1,11 @@
 ### Xor Trie
-
-
 ![Xor Trie](https://bloggg-1254259681.cos.na-siliconvalley.myqcloud.com/5dhef.jpg)
 
-
-    ```cpp
+    ```
+    
     struct xorTrie
     {
-        static constexpr int MAX = 1 << 19;
+        static constexpr int MAX = 1 << 19; // 1 0 0 0 0 0 0  .. 18 zeroes
         xorTrie *c[2] = {};
 
         void insert( int n )
@@ -47,4 +45,5 @@
         }
 
     };
+
     ```
