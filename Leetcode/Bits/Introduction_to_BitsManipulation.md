@@ -8,7 +8,7 @@ We say that a certain bit is **set**, if it is one, and **cleared** if it is zer
 
 The binary number $(a_k a_{k-1} \dots a_1 a_0)_2$ represents the number:
 
-$$(a_k a_{k-1} \dots a_1 a_0)_2 = a_k \cdot 2^k + a_{k-1} \cdot 2^{k-1} + \dots + a_1 \cdot 2^1 + a_0 \cdot 2^0.$$
+$`(a_k a_{k-1} \dots a_1 a_0)_2`$ = $`a_k \cdot 2^k + a_{k-1} \cdot 2^{k-1} + \dots + a_1 \cdot 2^1 + a_0 \cdot 2^0.`$
 
 For instance the binary number $1101_2$ represents the number $13$:
 
@@ -19,6 +19,7 @@ $$\begin{align}
 
 Computers represent integers as binary numbers.
 Positive integers (both signed and unsigned) are just represented with their binary digits, and negative signed numbers (which can be positive and negative) are usually represented with the [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement).
+
 
 ```cpp
 unsigned int unsigned_number = 13;
@@ -41,18 +42,18 @@ All those introduced operators are instant (same speed as an addition) on a CPU 
 
 ### Bitwise operators
 
--   $\&$ : The bitwise AND operator compares each bit of its first operand with the corresponding bit of its second operand. 
+-   `$` : The bitwise **AND** operator compares each bit of its first operand with the corresponding bit of its second operand. 
     If both bits are 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
  	
--   $|$ : The bitwise inclusive OR operator compares each bit of its first operand with the corresponding bit of its second operand.
+-   `|` : The bitwise inclusive **OR** operator compares each bit of its first operand with the corresponding bit of its second operand.
     If one of the two bits is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
 
--   $\wedge$ : The bitwise exclusive OR (XOR) operator compares each bit of its first operand with the corresponding bit of its second operand.
+-   $\wedge$ : The bitwise **exclusive OR (XOR)** operator compares each bit of its first operand with the corresponding bit of its second operand.
     If one bit is 0 and the other bit is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
 
--   $\sim$ : The bitwise complement (NOT) operator flips each bit of a number, if a bit is set the operator will clear it, if it is cleared the operator sets it.
+-   $\sim$ : The bitwise **complement (NOT)** operator flips each bit of a number, if a bit is set the operator will clear it, if it is cleared the operator sets it.
 
-Examples:
+**Examples**:
 
 ```
 n         = 01011000
@@ -104,11 +105,11 @@ There are two operators for shifting bits.
 ### Set/flip/clear a bit
 
 Using bitwise shifts and some basic bitwise operations we can easily set, flip or clear a bit.
-$1 \ll x$ is a number with only the $x$-th bit set, while $\sim(1 \ll x)$ is a number with all bits set except the $x$-th bit.
+$`1 \ll x`$ is a number with only the $x$-th bit set, while $\sim(1 \ll x)$ is a number with all bits set except the $x$-th bit.
 
-- $n ~|~ (1 \ll x)$ sets the $x$-th bit in the number $n$
-- $n ~\wedge~ (1 \ll x)$ flips the $x$-th bit in the number $n$
-- $n ~\&~ \sim(1 \ll x)$ clears the $x$-th bit in the number $n$
+- $`n ~|~ (1 \ll x)`$ sets the $x$-th bit in the number $n$
+- $`n ~\wedge~ (1 \ll x)`$ flips the $x$-th bit in the number $n$
+- $`n ~\&~ \sim(1 \ll x)`$ clears the $x$-th bit in the number $n$
 
 ### Check if a bit is set
 
@@ -122,8 +123,8 @@ bool is_set(unsigned int number, int x) {
 
 ### Check if the number is divisible by a power of 2
 
-Using the and operation, we can check if a number $n$ is even because $n ~\&~ 1 = 0$ if $n$ is even, and $n ~\&~ 1 = 1$ if $n$ is odd.
-More generally, $n$ is divisible by $2^{k}$ exactly when $n ~\&~ (2^{k} − 1) = 0$.
+Using the and operation, we can check if a number $n$ is even because $`n ~\&~ 1 = 0`$ if $n$ is even, and $`n ~\&~ 1 = 1`$ if $n$ is odd.
+More generally, $n$ is divisible by $`2^{k}`$ exactly when $`n ~\&~ (2^{k} − 1) = 0`$.
 
 ``` cpp
 bool isDivisibleByPowerOf2(int n, int k) {
@@ -138,7 +139,7 @@ And a number that is divisible by $2^k$ must have zero digits in those places.
 
 ### Check if an integer is a power of 2
 
-A power of two is a number that has only a single bit in it (e.g. $32 = 0010~0000_2$), while the predecessor of that number has that digit not set and all the digits after it set ($31 = 0001~1111_2$).
+A power of two is a number that has only a single bit in it (e.g. $`32 = 0010~0000_2`$), while the predecessor of that number has that digit not set and all the digits after it set ($`31 = 0001~1111_2`$).
 So the bitwise AND of a number with it's predecessor will always be 0, as they don't have any common digits set.
 You can easily check that this only happens for the the power of twos and for the number $0$ which already has no digit set.
 
@@ -150,11 +151,11 @@ bool isPowerOfTwo(unsigned int n) {
 
 ### Clear the right-most set bit
 
-The expression $n ~\&~ (n-1)$ can be used to turn off the rightmost set bit of a number $n$.
+The expression $`n ~\&~ (n-1)`$ can be used to turn off the rightmost set bit of a number $n$.
 This works because the expression $n-1$ flips all bits after the rightmost set bit of $n$, including the rightmost set bit.
 So all those digits are different from the original number, and by doing a bitwise AND they are all set to 0, giving you the original number $n$ with the rightmost set bit flipped.
 
-For example, consider the number $52 = 0011~0100_2$:
+For example, consider the number $`52 = 0011~0100_2`$:
 
 ```
 n         = 00110100
@@ -184,9 +185,9 @@ int countSetBits(int n)
 
 ### Additional tricks
 
-- $n ~\&~ (n + 1)$ clears all trailing ones: $0011~0111_2 \rightarrow 0011~0000_2$.
-- $n ~|~ (n + 1)$ sets the last cleared bit: $0011~0101_2 \rightarrow 0011~0111_2$.
-- $n ~\&~ -n$ extracts the last set bit: $0011~0100_2 \rightarrow 0000~0100_2$.
+- $`n ~\&~ (n + 1)`$ clears all trailing ones: $`0011~0111_2 \rightarrow 0011~0000_2`$.
+- $`n ~|~ (n + 1)`$ sets the last cleared bit: $`0011~0101_2 \rightarrow 0011~0111_2`$.
+- $`n ~\&~ -n`$ extracts the last set bit: $`0011~0100_2 \rightarrow 0000~0100_2`$.
 
 Many more can be found in the book [Hacker's Delight](https://en.wikipedia.org/wiki/Hacker%27s_Delight).
 
@@ -212,6 +213,8 @@ E.g. GCC defines a list at [Built-in Functions Provided by GCC](https://gcc.gnu.
 _Note that some of the operations (both the C++20 functions and the Compiler Built-in ones) might be quite slow in GCC if you don't enable a specific compiler target with `#pragma GCC target("popcnt")`._
 
 ## Practice Problems
+Leetcode Problems :
+
 
 * [Codeforces - Raising Bacteria](https://codeforces.com/problemset/problem/579/A)
 * [Codeforces - Fedor and New Game](https://codeforces.com/problemset/problem/467/B)
