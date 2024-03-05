@@ -185,11 +185,11 @@ int countSetBits(int n)
 
 ### Additional tricks
 
-- $`n ~\&~ (n + 1)`$ clears all trailing ones: $`0011~0111_2 \rightarrow 0011~0000_2`$.
-- $`n ~|~ (n + 1)`$ sets the last cleared bit: $`0011~0101_2 \rightarrow 0011~0111_2`$.
-- $`n ~\&~ -n`$ extracts the last set bit: $`0011~0100_2 \rightarrow 0000~0100_2`$.
+- $`n ~\&~ (n + 1)`$ clears all **trailing** ones:  $`0011~0111_2 \rightarrow 0011~0000_2`$.
+- $`n ~|~ (n + 1)`$ sets the last **cleared** bit:  $`0011~0101_2 \rightarrow 0011~0111_2`$.
+- $`n ~\&~ -n`$ extracts the last **set** bit:      $`0011~0100_2 \rightarrow 0000~0100_2`$.
 
-Many more can be found in the book [Hacker's Delight](https://doc.lagout.org/security/Hackers%20Delight.pdf).
+Book Reference : [Hacker's Delight](https://doc.lagout.org/security/Hackers%20Delight.pdf).
 
 ### Language and compiler support
 
