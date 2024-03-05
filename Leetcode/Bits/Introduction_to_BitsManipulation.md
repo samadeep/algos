@@ -191,7 +191,7 @@ int countSetBits(int n)
 
 Book Reference : [Hacker's Delight](https://doc.lagout.org/security/Hackers%20Delight.pdf).
 
-### Language and compiler support
+### C++ Functions for Bitwise Analysis
 
 C++ supports some of those operations since C++20 via the [bit](https://en.cppreference.com/w/cpp/header/bit) standard library:
 
