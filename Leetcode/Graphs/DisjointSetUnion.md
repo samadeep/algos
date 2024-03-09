@@ -1,7 +1,8 @@
 
 ## Topic 2 : Disjoint Set Union 
 
-Link : https://cp-algorithms.com/data_structures/disjoint_set_union.html
+**Visualisation** : https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html
+**Link** : https://cp-algorithms.com/data_structures/disjoint_set_union.html
 
 ### Disjoint Set Union Data Structure Template :
 
@@ -56,6 +57,7 @@ Link : https://cp-algorithms.com/data_structures/disjoint_set_union.html
 ```
 
 
+**Related Problems :**
 ### Question 1 : 2685. Count the Number of Complete Components
 Link : https://leetcode.com/problems/count-the-number-of-complete-components/description/
 
@@ -251,7 +253,7 @@ public:
 -  **Redundant Connection** : https://leetcode.com/problems/redundant-connection/description/ [ Cycle Detection using Union Find ]
 -  **Number of Operations to Make Network Connected** : https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/ 
 
-### Hard Problems :
+### Slightly Harder Problems :
 -   **Safest Path in Grid** : https://leetcode.com/problems/find-the-safest-path-in-a-grid/description/
 -   **Minimum Score of a Path Between Two Cities** : https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/description/
 -   **Checking Existence of Edge Length Limited Paths** : https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/description/
