@@ -1,8 +1,8 @@
 
 ## Topic 2 : Disjoint Set Union 
 
-**Visualisation** : https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html
-**Link** : https://cp-algorithms.com/data_structures/disjoint_set_union.html
+- **Visualisation** : https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html
+- **Link** : https://cp-algorithms.com/data_structures/disjoint_set_union.html
 
 ### Disjoint Set Union Data Structure Template :
 
