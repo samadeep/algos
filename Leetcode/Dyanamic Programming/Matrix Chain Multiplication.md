@@ -42,8 +42,13 @@ int matrixMultiplication(int N, int v[])
 
 ```
 
-**Code** :
-[1547. Minimum Cost to Cut a Stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/)
+
+### [1547. Minimum Cost to Cut a Stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/)
+
+#### Explanation :
+
+
+### Code :
 
 ```cpp
 class Solution {
@@ -85,6 +90,52 @@ public:
     }
 };
 ```
+### [1039. Minimum Score Triangulation of Polygon](https://leetcode.com/problems/minimum-score-triangulation-of-polygon/)
+
+#### Explanation :
+dp[i][j] means the minimum score to triangulate A[i] ~ A[j],
+while there is edge connect A[i] and A[j].
+
+We enumerate all points A[k] with i < k < j to form a triangle.
+
+The score of this triangulation is `dp[i][j] = dp[i][k] + dp[k][j] + A[i] * A[j] * A[k]`
+![](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/image_1557470819.png)
+Choosing K from all the availble points between `i .... j`
+![](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/image_1557471328.png)
+
+
+#### Code :
+
+```cpp
+class Solution {
+public:
+    int minScoreTriangulation(vector<int>& v) {
+        int n = v.size();
+        vector<vector<int>> dp( n , vector<int>( n , 0 ) );
+
+        // [0 .. 2] -> 3 check for min 3 points 
+
+        for( int g = 2 ; g < n ; g++ ){
+            for( int i = 0 , j = g ; j < n ; i++,j++ ){
+                int min_cost = INT_MAX;
+                for( int k = i + 1 ; k < j ; k++  ){
+                    int val = v[i] * v[j] * v[k];
+                    val = val + dp[i][k] + dp[k][j];
+
+                    min_cost = min( min_cost , val );
+
+                }
+
+                dp[i][j] = min_cost;
+            }
+        }
+
+        return dp[0][n-1];
+    }
+};
+```
+
+
 
 #### Related Problems :
 
