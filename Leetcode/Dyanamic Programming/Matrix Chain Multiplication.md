@@ -104,7 +104,7 @@ The score of this triangulation is `dp[i][j] = dp[i][k] + dp[k][j] + A[i] * A[j]
 ![](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/image_1557470819.png)
 
 
-**Choosing K from all the availble points between `i .... j`**
+**Choosing K from all the available points between `i .... j`**
 
 
 ![](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/image_1557471328.png)
