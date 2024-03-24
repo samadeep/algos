@@ -1,39 +1,220 @@
-## DP on Strings
+# DP on Strings
 
-#### Template Code :
+#### Template Code for such problems :
 
+1. For two strings.
 ```cpp
-for (int l = 1; l < n; ++l) {
-   for (int i = 0; i < n-l; ++i) {
-       int j = i + l;
-       if (s[i] == s[j]) {
-           dp[i][j] = /*code*/;
-       } else {
-           dp[i][j] = /*code*/;
-       }
-   }
+/* Pre-processing. Define basic cases. */
+for( int i = 1; i <= m; i++){
+	for( int j = 1; j <= n; j++){
+		if(s1[i - 1] == s2[j - 1]){
+			/* Your code */
+		}
+		else{
+			/* Your code */
+		}
+	}
+}
+```
+2. For one string
+```cpp
+/* Pre-processing. Define basic cases. */
+for( int len = 1; len < n; len++){
+	for( int i = 0; i + len < n; i++){
+		int j = i + len;
+		if(s1[i - 1] == s1[j - 1]){
+			/* Your code */
+		}
+		else{
+			/* Your code */
+		}
+	}
 }
 ```
 
+### [44. Wildcard Matching](https://leetcode.com/problems/wildcard-matching/)
+
+#### **Such Approaches using states can be used only for limited states that are present and we are aware of the transitions to be in the `i-1`th index from the `i`th index for a problem. For example : In the problem **Buy and Sell Stocks** we have 3 options of sell/buy/rest in most cases so there are `3 * n` states for each index so the states are limited to we can use Finite State Machine Thinking for such problems**
+
+The **String Pattern Matching** can be seen as running a **FSM**. 
+![image](https://s3-lc-upload.s3.amazonaws.com/users/guozhenli/image_1529467714.png)
+
+The first `for` loop builds up a FSM from `p`. The states of the machine are labeled as 0, 1, 2, ... The last state reached during the FSM building is the accepting state.
+
+The second `for` loop scans string `s` and run the FSM, by tracking what `states` the machine is at, and what `token` is read from `s`. The `*` and `?` tokens are always available. Because you can be at multiple states at the same time, in the second loop the `states` variable is a set of integers, rather than a single integer.
+
+Finally, if any of the state the FSM has reached matches the accepting state, we can conclude `s` and `p` match, otherwise they don't match.
+
+The first loop (FSM building) takes O(p) time. The second loop (string scanning) iterates over `s` once, thus O(s) iterations. Overall there are O(p+s) iterations. However, more strictly speaking in each iteration of the `for char in s` loop, you also iterate through all states you may be at (`for at in states`), which can be as many interations as the number of `*`'s in `p`, which is bounded by p. Thus the overall complexity in worst case is O(p+sp). If you believe the number of `*`'s in `p` can be bounded by a constant, then the overall complexity can be reduced to O(p+s).
+
+### **Code** :
+```cpp
+class Solution {
+public:   
+    
+    bool isMatch(string s, string p) 
+    {
+
+        map<std::pair<int ,char > , int> transfers ;
+        // transfer [ input ] -> next state 
+
+        int state = 0;
+        
+        for (char c : p) 
+        {
+            if (c == '*') {
+                transfers[{state, c}] = state;
+            } else {
+                transfers[{state, c}] = state + 1;
+                state += 1;
+            }
+        }
+
+        int accept = state ;
+        unordered_set<int> states = {0};
+
+        for( auto c : s )
+        {
+            std::unordered_set<int> newStates;
+
+            for( auto at : states )
+            {
+                for (char token : {c, '*', '?'})
+                {
+                    auto next_state = transfers.find( { at , token } ) ;
+                    if( next_state != transfers.end() )
+                    {
+                        newStates.insert( next_state -> second);
+                    }
+
+                } 
+            }
+            states = newStates;
+        }
+
+        return states.find(accept) != states.end();
+
+    }
+};
+```
+
+### Approach 2 : Tabulation :
+```cpp
+class Solution {
+public:   
+    
+    bool isMatch(string s, string p) {
+
+
+        if(p.length()==0)
+            return (s.length()==0);
+        
+        int len_s = s.size() , len_p = p.size();
+        vector<vector<bool>> dp( len_s + 1 , vector<bool>( len_p + 1 , false ) );
+
+        dp[0][0] = 1 ;
+
+        for( int i = 1 ; i <= len_p ; i++ )
+        {
+            if( p[i-1] == '*' ) dp[0][i] = 1 ;
+            else break;
+        }
+
+        for( int i = 1 ; i <= len_s ; i++ )
+        {
+            for( int j = 1 ; j <= len_p ; j++ )
+            {
+                if( p[j-1] == '*' )
+                {
+                    dp[i][j] = dp[i-1][j] or dp[i][j-1];
+                }
+                else if( p[j-1] == '?' || s[i-1] == p[j-1] )
+                {
+                    dp[i][j] = dp[i-1][j-1];
+                }
+            }
+        }
+
+       return dp[len_s][len_p];
+
+    }
+};
+```
+
+### [97. Interleaving String](https://leetcode.com/problems/interleaving-string/)
+
+![Interleaving](https://github.com/samadeep/data_structures_algorithms/blob/main/Leetcode/Dyanamic%20Programming/Images/Interleaving_picture.jpg)
+
+```cpp
+class Solution {
+public:
+    bool isInterleave(string s1, string s2, string s3) {
+
+        // state -> dp[string1][string2]
+
+       
+        int N = s1.size() , M = s2.size();
+        int K = s3.size();
+
+        if( N + M != K ) return false;
+
+        vector<vector<bool>> dp( N + 1 , vector<bool>( M + 1 , false ) );
+
+        s1 = '0' + s1 ;
+        s2 = '0' + s2 ;
+        s3 = '0' + s3 ;
+
+        // cout << s1 << s2 << s3 << endl;
+
+        if( N + M != K ) return false;
+
+        /*
+        
+        Transitions : dp[s1][s2] ->  
+        Represents whether s1 + s2  is interleaving at position s1 + s2 or not
+
+        dp[s1][s2] = dp[s1-1][s2] && s1[s1] == s3[s1+s2] || dp[s1][s2] && s2[s2] == s3[s1+s2]
+
+        */
+
+        for( int i = 0 ; i <= N ; i++ )
+        {
+            for( int j = 0 ; j <= M ; j++ )
+            {
+                if( i == 0 && j == 0 ) // both empty
+                {
+                    dp[i][j] = true;
+                }
+                else if( i == 0 ) // taken nothing from string 1
+                {
+                    dp[i][j] = dp[i][j-1] && s2[j] == s3[j];
+                }
+                else if( j == 0 ) // taken nothing from string 2
+                {
+                    dp[i][j] = dp[i-1][j] && s1[i] == s3[i];
+                }
+                else // taken something from both string1 and string2
+                {
+                    dp[i][j] = dp[i-1][j] && s1[i] == s3[i+j] || dp[i][j-1] && s2[j] == s3[i+j];
+                }
+            }
+        }
+
+        return dp[N][M];
+        
+    }
+};
+```
 ## Edit Distance / Regex Expression Matching / Scramble String
 
-### [Edit Distance](https://leetcode.com/problems/edit-distance/)
-
-
-  
-
-
-### [Regex Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
-
-
-
-### [Scramble String](https://leetcode.com/problems/scramble-string/description/)
+ - [Edit Distance](https://leetcode.com/problems/edit-distance/)
+ - [Regex Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
+ - [Scramble String](https://leetcode.com/problems/scramble-string/description/)
 
 
 __Link to Classical DP Problem List__ : https://leetcode.com/list/oqbiuoxe
 
-
-## Related Questions :
+### Other Questions :
 
 ### 647. Palindromic Substrings
 Link : https://leetcode.com/problems/palindromic-substrings/description/
@@ -70,8 +251,10 @@ public:
 };
 ```
 
-### 1531. String Compression II
 
+
+
+### 1531. String Compression II
 #### Approach 1 : Recursion and 3D Memoization
 Link : https://leetcode.com/problems/string-compression-ii/description/
 
