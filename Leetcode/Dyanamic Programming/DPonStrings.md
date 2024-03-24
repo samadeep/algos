@@ -36,7 +36,10 @@ for( int len = 1; len < n; len++){
 
 #### **Such Approaches using states can be used only for limited states that are present and we are aware of the transitions to be in the `i-1`th index from the `i`th index for a problem. For example : In the problem **Buy and Sell Stocks** we have 3 options of sell/buy/rest in most cases so there are `3 * n` states for each index so the states are limited to we can use Finite State Machine Thinking for such problems**
 
-The **String Pattern Matching** can be seen as running a **FSM**. 
+The **String Pattern Matching** can be seen as running a **FSM**.
+
+For string : `a*c?b` the FSM looks like :
+
 ![image](https://s3-lc-upload.s3.amazonaws.com/users/guozhenli/image_1529467714.png)
 
 The first `for` loop builds up a FSM from `p`. The states of the machine are labeled as 0, 1, 2, ... The last state reached during the FSM building is the accepting state.
