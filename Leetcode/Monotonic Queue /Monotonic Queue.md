@@ -7,7 +7,7 @@ for a more standardized approach we can apply queue (or deque).
 
 ### [1499. Max Value of Equation](https://leetcode.com/problems/max-value-of-equation/)
 
-#### Explanation :
+#### Explanation with 1 deque :
 Because `xi < xj` ,
 `yi + yj + |xi - xj|` = `(yi - xi) + (yj + xj)`
 
@@ -55,7 +55,7 @@ public:
 
 ### [1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
 
-#### Explanation :
+#### Explanation with 2 Deques :
 Longest subarray can be found using Sliding Window approach where we expand and shrink window
 based on condition. 
 
