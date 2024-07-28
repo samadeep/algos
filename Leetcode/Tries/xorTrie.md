@@ -1,8 +1,7 @@
 ### Xor Trie
 ![Xor Trie](https://bloggg-1254259681.cos.na-siliconvalley.myqcloud.com/5dhef.jpg)
 
-    ```
-    
+    ```cpp
     struct xorTrie
     {
         static constexpr int MAX = 1 << 19; // 1 0 0 0 0 0 0  .. 18 zeroes
@@ -30,7 +29,6 @@
             }
             return c[1] == c[0];
         }
-
         int get_maxXOR( int n )
         {
             int maxxor = 0;
@@ -43,7 +41,5 @@
             }
             return maxxor;
         }
-
     };
-
     ```
