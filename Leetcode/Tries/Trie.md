@@ -4,57 +4,67 @@
 Link : https://leetcode.com/problems/implement-trie-prefix-tree/
 
 ```cpp
-struct TrieNode
-{
-    // Array of 26 Links
+struct TrieNode {
     TrieNode* links[26];
     bool isWord;
-    TrieNode()
-    {
-        for( int i = 0 ; i < 26 ; i++ ) links[i] = NULL;
-        isWord = false;
+
+    // Constructor: Initialize links to nullptr and isWord to false
+    TrieNode() : isWord(false) { 
+        std::fill(std::begin(links), std::end(links), nullptr);
     }
 };
 
 class Trie {
 public:
-
     TrieNode* root;
-    Trie() {
-        root = new TrieNode();
+
+    // Constructor: Create the root node
+    Trie() : root(new TrieNode()) {}
+
+    // Destructor: Recursively delete all nodes to prevent memory leaks
+    ~Trie() { 
+        deleteTrie(root); 
     }
 
-    void insert(string word) {
-
+    void insert(const std::string& word) {
         TrieNode* curr = root;
-        for( auto c : word )
-        {
-            if( curr -> links[c-'a'] == NULL )  curr->links[c-'a'] = new TrieNode();
-            curr = curr -> links[c-'a'];
+        for (char c : word) {
+            int index = c - 'a';
+            if (!curr->links[index]) {
+                curr->links[index] = new TrieNode();
+            }
+            curr = curr->links[index];
         }
-        curr -> isWord = true;
+        curr->isWord = true; // Mark the end of a word
     }
 
-    bool search(string word) {
-        
+    bool search(const std::string& word) {
         TrieNode* curr = root;
-        for( auto c : word )
-        {
-            if( curr -> links[c-'a'] == NULL )  return false;
-            curr = curr -> links[c-'a'];
+        for (char c : word) {
+            int index = c - 'a';
+            if (!curr->links[index]) return false;
+            curr = curr->links[index];
         }
-        return curr -> isWord;
+        return curr->isWord; // Check if it's a complete word
     }
-    
-    bool startsWith(string prefix) {
 
+    bool startsWith(const std::string& prefix) {
         TrieNode* curr = root;
-        for( auto c : prefix )
-        {
-            if( curr -> links[c-'a'] == NULL )  return false;
-            curr = curr -> links[c-'a'];
+        for (char c : prefix) {
+            int index = c - 'a';
+            if (!curr->links[index]) return false;
+            curr = curr->links[index];
         }
-        return true;
+        return true; 
+    }
+
+private:
+    void deleteTrie(TrieNode* node) {
+        if (!node) return;
+        for (TrieNode* child : node->links) {
+            deleteTrie(child);
+        }
+        delete node;
     }
 };
 ```
