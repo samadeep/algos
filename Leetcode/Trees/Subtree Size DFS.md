@@ -26,6 +26,7 @@ Code :
 
 **2973. Find Number of Coins to Place in Tree Nodes**
 - Link : https://leetcode.com/problems/find-number-of-coins-to-place-in-tree-nodes/description/
+- Solution Link: https://leetcode.com/problems/find-number-of-coins-to-place-in-tree-nodes/submissions/1126811775
 
 **2872. Maximum Number of K-Divisible Components**
 - Link : https://leetcode.com/problems/maximum-number-of-k-divisible-components/description/
